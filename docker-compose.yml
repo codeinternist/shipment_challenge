@@ -1,11 +1,8 @@
 version: "3.4"
 services:
   app:
-    build:
-      context: .
-      target: app
-    ports:
-      - 5000:5000
+    build: .
+    network_mode: "host"
     environment:
       - POSTGRES_HOST=localhost
       - POSTGRES_PASSWORD=12345
@@ -16,8 +13,7 @@ services:
 
   postgres:
     image: postgres:latest
-    ports:
-      - 5432:5432
+    network_mode: "host"
     environment:
       - POSTGRES_PASSWORD=12345
       - POSTGRES_USER=king_roland
